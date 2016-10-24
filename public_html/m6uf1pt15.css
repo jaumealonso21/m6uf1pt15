@@ -1,0 +1,17 @@
+
+div.general {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+div.titol {
+    margin: auto;
+    position: absolute;
+}
+
+div.botons {
+    margin: auto;
+    position: absolute;
+}
+
