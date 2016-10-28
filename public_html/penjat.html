@@ -8,8 +8,9 @@
         <script src="m6uf1pt15.js"></script>
     </head>
     <body>
-        <div id="usuari">Introdueix lletres:</div>
+        <div id="usuari">Introdueix lletres:<input type="text" id="ent" size="1" onchange="jocPenjat(document.getElementById(this).value);" /></div>
         <div id="pc">_</div>
+        <div>Introdueix el nom de la pel.li<input type="text" id="prova" /></div>
         <div id="penjatCont"><img src="img/penjat.png" alt="penjat" width="200" height="200" id="penjatImg" /></div>
         <div id="jugar" hidden="hidden"><input type="button" onclick="location.reload();" value="Vols tornar a jugar?" /></div>
         <div id="menu" hidden="hidden"><input type="button" onclick="window.close();" value="Tornar al Menú?" /></div>
