@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html lang="ca">
+    <head>
+        <title>Pedra, paper, tisores, llangardaix, Spock</title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="m6uf1pt15.css" />
+        <script src="m6uf1pt15.js"></script>
+    </head>
+    <body>
+        <div id="jugador">Jugador escolleix:<br />
+            <input type="image" src="img/llangardaix.jpeg" onclick="jocSpock(0);" alt="llangardaix" width="259" height="194" />
+            <input type="image" src="img/paper.jpeg" onclick="jocSpock(1);" alt="paper" width="259" height="194" />
+            <input type="image" src="img/pedra.jpeg" onclick="jocSpock(2);" alt="pedra" width="259" height="194" />
+            <input type="image" src="img/spock.jpeg" onclick="jocSpock(3);" alt="spock" width="259" height="194" />
+            <input type="image" src="img/tissores.jpeg" onclick="jocSpock(4);" alt="tissores" width="259" height="194" />
+        </div>
+        <div id="pc">El PC escull...</div>
+        <div id="desti">Resultat</div>
+        <div id="jugar" hidden="hidden"><input type="button" onclick="location.reload();" value="Vols tornar a jugar?" /></div>
+        <div id="menu" hidden="hidden"><input type="button" onclick="window.close();" value="Tornar al Menú?" /></div>
+    </body>
+</html>
