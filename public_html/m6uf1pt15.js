@@ -104,11 +104,29 @@ function jocSpock() {
     return true;        
 }
 
+var peli;
+
 function jocPenjat() {
     var resposta;
-    var peli = "Star Wars";
+    var ent = arguments[0];
+    var numPeli = Math.floor(Math.random()*5);//genera entre 0 i 4
+    
+    //BBDD intern de pe.lícules
+    peli = [
+        /*0*/"Star Wars",
+        /*1*/"Star Trek",
+        /*2*/"Señor de los anillos",
+        /*3*/"El silencio de los corderos",
+        /*4*/"South Park"
+    ];
+    
+    var peliEscollida = peli[numPeli];
     
     
+    
+    document.getElementById("pc").innerHTML = resposta;
+    document.getElementById("jugar").hidden = false;
+    document.getElementById("menu").hidden = false;
     
     return true;
 }
