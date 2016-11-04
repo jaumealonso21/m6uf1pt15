@@ -28,6 +28,8 @@ function obrir() {
     return resposta;
 }
 
+
+//-------------------------------------EL JOC del Spock-------------------------------------------
 function jocSpock() {
     var resposta;
     var joc = Math.floor((Math.random() * 5));//gen num entre 0 i 4
@@ -104,29 +106,122 @@ function jocSpock() {
     return true;        
 }
 
-var peli;
+
+//------------------ EL JOC del PENJAT ----------------------------------------------------------
+var peli = []; //vector de pel.lis
+var cont = 0; //contador d'entrada de caràcters
+//Mirar més endavant problema de majúscules, tot en minúscules!!!!!!!!!!!!!!
+//var peliTemp= "star wars";//Variable temp per comprovar fi de partida, arreglar desprès
+//borrar
+var numIntents = 5;
+var peliTemp;
+//var peliEscollida = "star wars"; //Segona variable temp
+var peliEscollida;
+//Per body onload
+function carrega () {
+    document.getElementById("titolh3").innerHTML = "Només tindràs " + (numIntents + 1) + " intents!!!!!";
+    var numPeli = Math.floor(Math.random()*10);//genera entre 0 i 9, 10 elements
+    
+    //BBDD intern de pe.lícules--més endavant
+    pelis = [
+        /*0*/"star wars",
+        /*1*/"star trek",
+        /*2*/"el señor de los anillos",
+        /*3*/"el silencio de los corderos",
+        /*4*/"south park",
+        /*5*/"banana joe",
+        /*6*/"outlander",
+        /*7*/"el ultimo samurai",
+        /*8*/"the walking dead",
+        /*9*/"los goonies"
+    ];
+    //peliTemp = pelis[numPeli];
+    peliEscollida = pelis[numPeli];
+    
+    for(i=0;i<peliEscollida.split("").length;i++){
+        peli[i] = "-";
+    }
+    
+    document.getElementById("pc").innerHTML = peli;
+    //var peliEscollida = peli[numPeli];Més endavant
+    
+    console.log(peliEscollida);
+}
 
 function jocPenjat() {
     var resposta;
     var ent = arguments[0];
-    var numPeli = Math.floor(Math.random()*5);//genera entre 0 i 4
-    
-    //BBDD intern de pe.lícules
-    peli = [
-        /*0*/"Star Wars",
-        /*1*/"Star Trek",
-        /*2*/"Señor de los anillos",
-        /*3*/"El silencio de los corderos",
-        /*4*/"South Park"
-    ];
-    
-    var peliEscollida = peli[numPeli];
-    
-    
-    
-    document.getElementById("pc").innerHTML = resposta;
-    document.getElementById("jugar").hidden = false;
-    document.getElementById("menu").hidden = false;
+    //ent = ent.toLowerCase();
+    var vectorPeli;
+    trobat = false;
+        
+    vectorPeli = peliEscollida.split("");
+    //vectorPeli = vectorPeli.toLowerCase();
+    //alert(vectorPeli[3]);
+    for(i = 0; i < vectorPeli.length; i++){
+        if(ent ===  vectorPeli[i]) {
+            peli[i] = ent;
+            trobat = true;
+        } 
+    }
+    if(!trobat) {//conta intents si no l'ha trobat
+        cont++;
+    }
+    //resposta = peli;
+    //Contador fins a final de la partida
+    if(cont < numIntents) {
+        document.getElementById("intents").innerHTML = "Nombre d'intents: " + cont;
+        //cont++;
+        document.getElementById("pc").innerHTML = peli;
+        animaPenjat();
+    } else if(cont === numIntents) {
+        document.getElementById("intents").innerHTML = "Et queda 1 intent, ja portes " + cont + " intents.";
+        document.getElementById("pc").innerHTML = peli;
+        animaPenjat();
+    } else {
+        document.getElementById("pcFinal").hidden = false;
+        document.getElementById("pcFinal").innerHTML = "Has perdut. Has superat el límit d'intents";
+        document.getElementById("intents").innerHTML = "";
+        tancarPenjat();
+     }
     
     return true;
+}
+
+//Va definint la imatge del penjat, a mesura que es van fent intents
+function animaPenjat() {
+    var resposta;
+    var blur = 7;//Valor d'inici de l'atribut css de la imatge del penjat
+    blur = blur - (cont + 2);//Anant disminuint el valor de l'atribut de css per millorar la imatge
+    
+    resposta = "blur(" + blur +"px)";
+    
+    document.getElementById("penjatImg").style.filter = resposta;
+    document.getElementById("penjatImg").style.webkitFilter = resposta;/* Safari 6.0 - 9.0 */
+}
+
+function comprovaPenjat() {
+    var resposta;
+    
+    if(arguments[0] === peliEscollida) { 
+        resposta = "Has guanyat!";
+    } else {
+        resposta = "Has Perdut. La resposta correcta és '" + peliEscollida + "'";
+    }
+    
+    document.getElementById("pcFinal").hidden = false;
+    document.getElementById("pcFinal").innerHTML = resposta;
+    tancarPenjat();
+    
+    return true;
+}
+
+function tancarPenjat() {
+    document.getElementById("jugar").hidden = false;
+    document.getElementById("menu").hidden = false;
+    document.getElementById("usuari").innerHTML = "";
+    document.getElementById("peli").innerHTML = "";
+    document.getElementById("usuari").innerHTML = "";
+    document.getElementById("pc").innerHTML = "";
+    document.getElementById("intents").innerHTML = "";
 }
