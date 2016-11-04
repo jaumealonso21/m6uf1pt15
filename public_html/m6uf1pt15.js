@@ -111,16 +111,11 @@ function jocSpock() {
 var peli = []; //vector de pel.lis
 var cont = 0; //contador d'entrada de caràcters
 //Mirar més endavant problema de majúscules, tot en minúscules!!!!!!!!!!!!!!
-//var peliTemp= "star wars";//Variable temp per comprovar fi de partida, arreglar desprès
-//borrar
 var numIntents = 5;
-var peliTemp;
-//var peliEscollida = "star wars"; //Segona variable temp
 var peliEscollida;
 //Per body onload
 function carrega () {
     document.getElementById("titolh3").innerHTML = "Només tindràs " + (numIntents + 1) + " intents!!!!!";
-    var numPeli = Math.floor(Math.random()*10);//genera entre 0 i 9, 10 elements
     
     //BBDD intern de pe.lícules--més endavant
     pelis = [
@@ -135,7 +130,7 @@ function carrega () {
         /*8*/"the walking dead",
         /*9*/"los goonies"
     ];
-    //peliTemp = pelis[numPeli];
+    var numPeli = Math.floor(Math.random()*pelis.length);//genera tants elem com num d'items la BBDD
     peliEscollida = pelis[numPeli];
     
     for(i=0;i<peliEscollida.split("").length;i++){
@@ -143,21 +138,17 @@ function carrega () {
     }
     
     document.getElementById("pc").innerHTML = peli;
-    //var peliEscollida = peli[numPeli];Més endavant
     
-    console.log(peliEscollida);
+    console.log(peliEscollida);//Xuleta per veure la pel.li escollida i comprovar el funcionament
 }
 
 function jocPenjat() {
-    var resposta;
     var ent = arguments[0];
     //ent = ent.toLowerCase();
     var vectorPeli;
     trobat = false;
         
     vectorPeli = peliEscollida.split("");
-    //vectorPeli = vectorPeli.toLowerCase();
-    //alert(vectorPeli[3]);
     for(i = 0; i < vectorPeli.length; i++){
         if(ent ===  vectorPeli[i]) {
             peli[i] = ent;
@@ -167,7 +158,6 @@ function jocPenjat() {
     if(!trobat) {//conta intents si no l'ha trobat
         cont++;
     }
-    //resposta = peli;
     //Contador fins a final de la partida
     if(cont < numIntents) {
         document.getElementById("intents").innerHTML = "Nombre d'intents: " + cont;
