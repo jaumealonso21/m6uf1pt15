@@ -8,6 +8,17 @@
         <script src="m6uf1pt15.js"></script>
     </head>
     <body>
-        <div>TODO write content</div>
+        <h3>La morra</h3>
+        Escull el número: <input type="number" min="0" max="5" id="maJugador" 
+                                 onchange="validadorHuma(this.value);" />
+        <span id="apostaText" hidden="hidden">Fes la teva aposta: <input type="number" 
+                                 onchange="juga();" min="0" max="10" id="aposta" />
+        <input type="button" id="maPC" onclick="jocMorra(document.getElementById('maJugador').value,
+                    document.getElementById('aposta').value);" value="Juga!" hidden="hidden" /></span>
+        <div id="jocPC"></div>
+        <div id="total"></div>
+        <div id="resultat" hidden="hidden"></div>
+        <div id="jugar" hidden="hidden"><input type="button" onclick="location.reload();" value="Vols tornar a jugar?" /></div>
+        <div id="menu" hidden="hidden"><input type="button" onclick="window.close();" value="Tornar al Menú?" /></div>
     </body>
 </html>

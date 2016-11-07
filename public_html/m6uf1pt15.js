@@ -215,3 +215,56 @@ function tancarPenjat() {
     document.getElementById("pc").innerHTML = "";
     document.getElementById("intents").innerHTML = "";
 }
+
+//------------------------------------El Joc de la Morra--------------------------------------
+function juga() {
+    document.getElementById("maPC").hidden = false;
+}
+
+function validadorHuma() { //de forma dinàmica l'aposta no pot ser menor que els dits
+    var ent;
+    
+    ent = parseInt(arguments[0]);
+    document.getElementById("aposta").min = ent;
+    document.getElementById("apostaText").hidden = false;
+    
+    return true;
+}
+
+
+function jocMorra() {//Vindran 2 arguments:els teus dits i l'aposta
+    var resposta;
+    var maJugador = parseInt(arguments[0]);
+    var apostaJugador = parseInt(arguments[1]);
+    var maPC;
+    var apostaPC;
+    var total;
+      
+    maPC = Math.floor(Math.random()*6);//Escull entre 5 dits i 0 (6 elements)
+    do {
+        apostaPC = Math.floor(Math.random()*10);//Escull entre màx dits i 0 (11 elements)
+    }while(apostaPC < maPC);//L'aposta no sigui més petita que el núm de dits
+    
+
+    total = maJugador + maPC;//Num total de dits
+    
+    if((total === apostaPC) && (total === apostaJugador)) {
+        resposta = "Empat!La mateixa aposta ";
+    } else if(total === apostaPC) {
+        resposta = "Guanya el PC";
+    } else if(total === apostaJugador) {
+        resposta = "Guanya el Jugador";
+    } else {
+        resposta = "No guanya ningú";
+    }
+    
+    document.getElementById("maPC").hidden = true;
+    document.getElementById("jocPC").innerHTML = "El PC ha escollit " + maPC + " dits i ha apostat: " + apostaPC;
+    document.getElementById("total").innerHTML = "La suma total de dits és : " + total;
+    document.getElementById("resultat").hidden = false;
+    document.getElementById("resultat").innerHTML = resposta;
+    document.getElementById("jugar").hidden = false;
+    document.getElementById("menu").hidden = false;
+    
+    return true;
+}
