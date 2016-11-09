@@ -14,7 +14,7 @@ function obrir() {
             break;
         case 2:
             joc = "morra.html";
-           break;
+            break;
        default:
            resposta = false;
            joc = "";
@@ -111,11 +111,31 @@ function jocSpock() {
 var peli = []; //vector de pel.lis
 var cont = 0; //contador d'entrada de caràcters
 //Mirar més endavant problema de majúscules, tot en minúscules!!!!!!!!!!!!!!
-var numIntents = 5;
+var numIntents;
 var peliEscollida;
+
+function level() {
+    var ent = parseInt(arguments[0]);
+    
+    switch(ent){
+        case 1:
+            numIntents = 8;
+            break;
+        case 2:
+            numIntents = 5;
+            break;
+        case 3:
+            numIntents = 2;
+            break;
+    }
+    
+    document.getElementById("divLevel").hidden = true;
+    document.getElementById("contPenjat").hidden = false;
+    document.getElementById("titolh3").innerHTML = "Només tindràs " + (numIntents + 1) + " intents!!!!!";
+}
+
 //Per body onload
 function carrega () {
-    document.getElementById("titolh3").innerHTML = "Només tindràs " + (numIntents + 1) + " intents!!!!!";
     
     //BBDD intern de pe.lícules--més endavant
     pelis = [
@@ -165,7 +185,7 @@ function jocPenjat() {
         document.getElementById("pc").innerHTML = peli;
         animaPenjat();
     } else if(cont === numIntents) {
-        document.getElementById("intents").innerHTML = "Et queda 1 intent, ja portes " + cont + " intents.";
+        document.getElementById("intents").innerHTML = "Et queda l'ùltim intent, ja portes " + cont + " intents.";
         document.getElementById("pc").innerHTML = peli;
         animaPenjat();
     } else {

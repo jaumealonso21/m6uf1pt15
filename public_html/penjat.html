@@ -8,20 +8,30 @@
         <script src="m6uf1pt15.js"></script>
     </head>
     <body onload="carrega();">
-        <h3 id="titolh3"></h3>
-        <div id="usuari">
-            Introdueix lletres:<input type="text" id="ent" size="1" value="" />
-            <input type="button" onclick="jocPenjat(document.getElementById('ent').value);" id="botoCar" value="Prova" />
+        <div id="divLevel">
+            Nivells de dificultat:<ol>
+                <li>Fàcil - 8 intents</li>
+                <li>Mig - 5 intents</li>
+                <li>Difícil - 2 intents</li>
+            </ol>
+            Nivel de dificultat: <input type="number" min="1" max="3" id="level" />
+            <input type="button" value="Selec." onclick="level(document.getElementById('level').value);" /></div>
+        <div id="contPenjat" hidden="hidden">
+            <h3 id="titolh3"></h3>
+            <div id="usuari">
+                Introdueix lletres:<input type="text" id="ent" size="1" value="" />
+                <input type="button" onclick="jocPenjat(document.getElementById('ent').value);" id="botoCar" value="Prova" />
+            </div>
+            <div id="pc">_</div>
+            <div id="peli">Introdueix el nom de la pel.li (només un intent): 
+                <input type="text" id="prova" value="" />
+                <input type="button" onclick="comprovaPenjat(document.getElementById('prova').value);" id="botoFrase" value="Comprova" />
+            </div>
+            <div id="pcFinal" hidden="hidden"></div>
+            <div id="penjatCont"><img src="img/penjat.png" alt="penjat" width="200" height="200" id="penjatImg" /></div>
+            <div id="intents"></div>
+            <div id="jugar" hidden="hidden"><input type="button" onclick="location.reload();" value="Vols tornar a jugar?" /></div>
+            <div id="menu" hidden="hidden"><input type="button" onclick="window.close();" value="Tornar al Menú?" /></div>
         </div>
-        <div id="pc">_</div>
-        <div id="peli">Introdueix el nom de la pel.li (només un intent): 
-            <input type="text" id="prova" value="" />
-            <input type="button" onclick="comprovaPenjat(document.getElementById('prova').value);" id="botoFrase" value="Comprova" />
-        </div>
-        <div id="pcFinal" hidden="hidden"></div>
-        <div id="penjatCont"><img src="img/penjat.png" alt="penjat" width="200" height="200" id="penjatImg" /></div>
-        <div id="intents"></div>
-        <div id="jugar" hidden="hidden"><input type="button" onclick="location.reload();" value="Vols tornar a jugar?" /></div>
-        <div id="menu" hidden="hidden"><input type="button" onclick="window.close();" value="Tornar al Menú?" /></div>
     </body>
 </html>
