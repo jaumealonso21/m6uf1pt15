@@ -114,7 +114,7 @@ var cont = 0; //contador d'entrada de caràcters
 var numIntents;
 var peliEscollida;
 
-function level() {
+function level() { //Nivell de dificultat
     var ent = parseInt(arguments[0]);
     
     switch(ent){
@@ -135,7 +135,7 @@ function level() {
 }
 
 //Per body onload
-function carrega () {
+function carrega () { //Simula BBDD
     
     //BBDD intern de pe.lícules--més endavant
     pelis = [
@@ -193,6 +193,7 @@ function jocPenjat() {
         document.getElementById("pcFinal").innerHTML = "Has perdut. Has superat el límit d'intents";
         document.getElementById("intents").innerHTML = "";
         tancarPenjat();
+        //terror();
      }
     
     return true;
@@ -210,6 +211,13 @@ function animaPenjat() {
     document.getElementById("penjatImg").style.webkitFilter = resposta;/* Safari 6.0 - 9.0 */
 }
 
+function terror() { //quan perd la partida
+    //var ent = arguments[0];
+    
+    document.getElementById('penjatImg').src = "img/loser.gif";
+    document.getElementById('penjatImg').width = "";
+    document.getElementById('penjatImg').height= "";
+}
 function comprovaPenjat() {
     var resposta;
     
